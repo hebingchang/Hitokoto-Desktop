@@ -66,6 +66,16 @@
                 </WrapPanel>
             </Controls:RadialMenuItem>
 
+            <Controls:RadialMenuItem x:Name="about" Command="{Binding AboutCommand}">
+                <WrapPanel Orientation="Vertical">
+                    <Rectangle Width="10" Height="30">
+                        <Rectangle.Fill>
+                            <VisualBrush Visual="{StaticResource appbar_candle}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock FontSize="15" Foreground="White">关于</TextBlock>
+                </WrapPanel>
+            </Controls:RadialMenuItem>
             <!-- Add items as you want... -->
 
         </Controls:RadialMenu>

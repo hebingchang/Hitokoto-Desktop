@@ -1,0 +1,33 @@
+﻿<Window x:Class="WinAbout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hitokoto"
+        mc:Ignorable="d"
+        Title="WinMenu" Height="417.836" Width="371.638" AllowsTransparency="True" WindowStyle="None" Background="#00FFFFFF" Topmost="True" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Border CornerRadius="5" Margin="10" Opacity="0.8">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="#FF414141" BlurRadius="18"/>
+            </Border.Effect>
+            <Border Background="Black" Opacity="0.5" Margin="0" CornerRadius="5"/>
+
+        </Border>
+        <Label x:Name="lblhitokoto" Content="Hitokoto" Margin="28,36,160.5,318" Foreground="White" FontFamily="Microsoft YaHei UI Light" FontSize="40" FontWeight="100"/>
+        <Label x:Name="lblyi" Content="一言" Margin="193,54,122.5,328" Foreground="White" FontFamily="华文中宋" FontSize="20"/>
+        <Label x:Name="lbloie" Content="One is enough." Margin="36,92,242.5,290" Foreground="White" FontFamily="Microsoft YaHei UI Light"/>
+        <Rectangle Fill="#00FFFFFF" Stroke="White" Margin="33,94,337.5,301" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Label x:Name="lbloie_Copy" Content="Thanks to the following poject:" Margin="28,172,91.5,216" Foreground="White" FontSize="15"/>
+        <Label x:Name="lbloie_Copy1" Content="· Newtonsoft.Json&#xD;&#xA;  https://github.com/JamesNK/Newtonsoft.Json&#xD;&#xA;&#xD;&#xA;· RadialMenu&#xD;&#xA;  https://github.com/Julien-Marcou/RadialMenu&#xD;&#xA;&#xD;&#xA;· Hitokoto API&#xD;&#xA;  https://api.imjad.cn/hitokoto/index.html" Margin="28,207,42.5,67" Foreground="White" FontFamily="Microsoft YaHei UI Light" FontSize="13"/>
+    </Grid>
+</Window>

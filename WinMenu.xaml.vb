@@ -1,4 +1,11 @@
 ﻿Public Class WinMenu
+    Private Sub about_Click(sender As Object, e As RoutedEventArgs) Handles about.Click
+        Dim mw As MainWindow
+        mw = Me.Owner
+        Me.Hide()
+        mw.loadabout()
+    End Sub
+
     Private Sub change_Click(sender As Object, e As RoutedEventArgs) Handles change.Click
         Dim mw As MainWindow
         mw = Me.Owner

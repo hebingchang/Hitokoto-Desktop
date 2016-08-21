@@ -111,4 +111,10 @@ retry:
         winlike.Owner = Me
         winlike.ShowDialog()
     End Sub
+
+    Public Sub loadabout()
+        Dim winabout As New WinAbout
+        winabout.Owner = Me
+        winabout.ShowDialog()
+    End Sub
 End Class

@@ -54,6 +54,16 @@ Hitokoto
   重写当前线程的 CurrentUICulture 属性。
 </summary>
 </member>
+<member name="T:Hitokoto.WinAbout">
+<summary>
+WinAbout
+</summary>
+</member>
+<member name="M:Hitokoto.WinAbout.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
 <member name="T:Hitokoto.WinLike">
 <summary>
 WinLike

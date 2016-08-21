@@ -78,6 +78,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="WinAbout.xaml.vb">
+      <DependentUpon>WinAbout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WinLike.xaml.vb">
       <DependentUpon>WinLike.xaml</DependentUpon>
     </Compile>
@@ -96,6 +99,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WinAbout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WinLike.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

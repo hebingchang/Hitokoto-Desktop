@@ -22,3 +22,5 @@ C:\Users\hebingchang\documents\visual studio 2015\Projects\Hitokoto\Hitokoto\obj
 C:\Users\hebingchang\documents\visual studio 2015\Projects\Hitokoto\Hitokoto\obj\Debug\Application.baml
 C:\Users\hebingchang\documents\visual studio 2015\Projects\Hitokoto\Hitokoto\obj\Debug\WinLike.g.vb
 C:\Users\hebingchang\documents\visual studio 2015\Projects\Hitokoto\Hitokoto\obj\Debug\WinLike.baml
+C:\Users\hebingchang\documents\visual studio 2015\Projects\Hitokoto\Hitokoto\obj\Debug\WinAbout.g.vb
+C:\Users\hebingchang\documents\visual studio 2015\Projects\Hitokoto\Hitokoto\obj\Debug\WinAbout.baml
