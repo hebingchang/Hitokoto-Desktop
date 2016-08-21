@@ -19,7 +19,10 @@ Class MainWindow
     Public Const WM_SYSCOMMAND As Integer = &H112&
     Public Const SC_MOVE As Integer = &HF010&
     Public Const HTCAPTION As Integer = &H2&
-    Const GWL_EXSTYLE = (-20)    Const WS_EX_LAYERED = &H80000    Const WS_EX_TRANSPARENT As Integer = &H20&
+
+    Const GWL_EXSTYLE = (-20)
+    Const WS_EX_LAYERED = &H80000
+    Const WS_EX_TRANSPARENT As Integer = &H20&
 
     Dim movetime As Date
     Dim timeoutTimer As New System.Timers.Timer
@@ -34,10 +37,13 @@ Class MainWindow
         timeoutTimer.Interval = 1000
         timeoutTimer.Enabled = True
 
+
+
         'Function that gets called after each interval
         AddHandler timeoutTimer.Elapsed, AddressOf OnTimedEvent
-        movetime = Format(DateTime.Now, "yyyy/MM/dd hh:mm:ss")
+        movetime = Now
     End Sub
+
 
     Private Sub OnTimedEvent(sender As Object, e As ElapsedEventArgs)
         Dim nowtime = Format(DateTime.Now, "yyyy/MM/dd hh:mm:ss")
@@ -50,7 +56,7 @@ Class MainWindow
         End If
     End Sub
 
-    Private Sub RefHitokoto()
+    Public Sub RefHitokoto()
         On Error GoTo retry
 retry:
         Dim MyClient As Net.WebClient = New Net.WebClient
@@ -65,17 +71,12 @@ retry:
         Me.lblText.BeginAnimation(UIElement.OpacityProperty, daV)
 
         lblText.Measure(New Size(Double.PositiveInfinity, Double.PositiveInfinity))
+        lblText.Tag = json
 
         Me.Width = lblText.DesiredSize.Width
         Me.Top = SystemParameters.PrimaryScreenHeight - Me.Height - SystemParameters.MenuBarHeight * 2
         Me.Left = SystemParameters.PrimaryScreenWidth - Me.Width
-    End Sub
 
-    Private Sub lblText_MouseUp(sender As Object, e As MouseButtonEventArgs) Handles lblText.MouseUp
-        Dim daV As DoubleAnimation = New DoubleAnimation(1, 0, New Duration(TimeSpan.FromSeconds(0.5)))
-        Me.lblText.BeginAnimation(UIElement.OpacityProperty, daV)
-
-        RefHitokoto()
 
     End Sub
 
@@ -91,5 +92,23 @@ retry:
         End If
         movetime = Now
         timeoutTimer.Enabled = True
+    End Sub
+
+    Private Sub lblText_MouseDoubleClick(sender As Object, e As MouseButtonEventArgs) Handles lblText.MouseDoubleClick
+        Dim daV As DoubleAnimation = New DoubleAnimation(1, 0, New Duration(TimeSpan.FromSeconds(0.5)))
+        Me.lblText.BeginAnimation(UIElement.OpacityProperty, daV)
+        RefHitokoto()
+    End Sub
+
+    Private Sub MainWindow_MouseRightButtonUp(sender As Object, e As MouseButtonEventArgs) Handles Me.MouseRightButtonUp
+        Dim winmenu As New WinMenu
+        winmenu.Owner = Me
+        winmenu.ShowDialog()
+    End Sub
+
+    Public Sub loadlike()
+        Dim winlike As New WinLike
+        winlike.Owner = Me
+        winlike.ShowDialog()
     End Sub
 End Class

@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hitokoto"
         xmlns:wpflib="clr-namespace:BLCTClassLibrary.WpfLib;assembly=BLCTClassLibrary.WpfLib" 
-        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:tb="http://www.hardcodet.net/taskbar"        
         mc:Ignorable="d"
         Title="MainWindow" Height="64.764" Width="504.532" AllowsTransparency="True" WindowStyle="None" Background="#00FFFFFF" Topmost="True">
-    <Grid Width="{Binding Width, ElementName=w}" Height="{Binding Height, ElementName=w}">
+    <Grid Width="{Binding Width, ElementName=w}" Height="{Binding Height, ElementName=w}" >
         <Border CornerRadius="5" Margin="10" Opacity="0.8">
             <Border.Effect>
                 <DropShadowEffect ShadowDepth="0" Color="#FF414141" BlurRadius="8"/>
@@ -19,5 +19,4 @@
         <!--<wpflib:StrokeableLabel x:Name="lblText" HorizontalAlignment="Left" Text="测试文本" Fill="Black" Stroke="White" StrokeThickness="0.4" FontWeight="200" FontSize="24" Margin="18,17,0,18"/>-->
 
     </Grid>
-
 </Window>

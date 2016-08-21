@@ -1,0 +1,73 @@
+﻿<Window x:Class="WinMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hitokoto"
+        xmlns:Controls="clr-namespace:RadialMenu.Controls;assembly=RadialMenu"
+        mc:Ignorable="d"
+        Title="WinMenu" Height="350" Width="350" AllowsTransparency="True" WindowStyle="None" Background="#00FFFFFF" Topmost="True" ShowInTaskbar="False" WindowStartupLocation="CenterScreen"
+ >
+    <Grid>
+
+        <Border CornerRadius="500" Margin="10" BorderThickness="2" BorderBrush="White" Opacity="0.8">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" Color="#FF414141" BlurRadius="8"/>
+            </Border.Effect>
+            <Border Background="Black" Opacity="0.5" Margin="0" CornerRadius="500"/>
+        </Border>
+        
+        
+        
+        
+        <Controls:RadialMenu x:Name="menu" IsOpen="{Binding IsOpen}">
+
+            <!-- CentralMenuItem -->
+
+            <Controls:RadialMenu.CentralItem>
+                <Controls:RadialMenuCentralItem x:Name="close" Command="{Binding CloseRadialMenuCommand}">
+                    <TextBlock FontSize="15" Foreground="White">关闭</TextBlock>
+                </Controls:RadialMenuCentralItem>
+            </Controls:RadialMenu.CentralItem>
+
+            <!-- MenuItems Around -->
+
+            <Controls:RadialMenuItem x:Name="change" Command="{Binding change}">
+                <WrapPanel Orientation="Vertical">
+                <Rectangle Width="35" Height="25">
+                    <Rectangle.Fill>
+                            <VisualBrush Visual="{StaticResource appbar_cloud}"/>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock FontSize="15" Foreground="White">换一句</TextBlock>
+                    </WrapPanel> 
+            </Controls:RadialMenuItem>
+
+            <Controls:RadialMenuItem x:Name="exit" Command="{Binding ExitCommand}">
+                <WrapPanel Orientation="Vertical">
+                    <Rectangle Width="25" Height="25">
+                        <Rectangle.Fill>
+                            <VisualBrush Visual="{StaticResource appbar_close}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock FontSize="15" Foreground="White">退出</TextBlock>
+                </WrapPanel>
+                
+            </Controls:RadialMenuItem>
+
+            <Controls:RadialMenuItem x:Name="like" Command="{Binding LikeCommand}">
+                <WrapPanel Orientation="Vertical">
+                    <Rectangle Width="30" Height="30">
+                        <Rectangle.Fill>
+                            <VisualBrush Visual="{StaticResource appbar_share}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock FontSize="15" Foreground="White">喜欢这句！</TextBlock>
+                </WrapPanel>
+            </Controls:RadialMenuItem>
+
+            <!-- Add items as you want... -->
+
+        </Controls:RadialMenu>
+    </Grid>
+</Window>
