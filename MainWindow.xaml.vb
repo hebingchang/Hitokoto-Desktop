@@ -21,7 +21,8 @@ Class MainWindow
     Public Const HTCAPTION As Integer = &H2&
     Const GWL_EXSTYLE = (-20)    Const WS_EX_LAYERED = &H80000    Const WS_EX_TRANSPARENT As Integer = &H20&
 
-    Dim movetime As String
+    Dim movetime As Date
+    Dim timeoutTimer As New System.Timers.Timer
 
     Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         'Me.Background = Brushes.Transparent
@@ -30,9 +31,6 @@ Class MainWindow
         SetParent(handle.Handle, GetDesktopWindow())
         'SetWindowLong(handle.Handle, GWL_EXSTYLE, GetWindowLong(handle.Handle, GWL_EXSTYLE) Or WS_EX_LAYERED Or WS_EX_TRANSPARENT)
         RefHitokoto()
-
-        Dim timeoutTimer As New System.Timers.Timer
-
         timeoutTimer.Interval = 1000
         timeoutTimer.Enabled = True
 
@@ -43,15 +41,13 @@ Class MainWindow
 
     Private Sub OnTimedEvent(sender As Object, e As ElapsedEventArgs)
         Dim nowtime = Format(DateTime.Now, "yyyy/MM/dd hh:mm:ss")
-        If DateDiff(DateInterval.Second, CDate(movetime), CDate(nowtime)) > 5 Then
-            Dim messageTarget As Action
-            messageTarget = AddressOf setopacity
-            Me.Dispatcher.Invoke(messageTarget, Nothing)
+        If DateDiff(DateInterval.Second, movetime, Now) > 5 Then
+            Me.Dispatcher.Invoke(Sub()
+                                     timeoutTimer.Enabled = False
+                                     Dim daV As DoubleAnimation = New DoubleAnimation(1, 0.5, New Duration(TimeSpan.FromSeconds(0.5)))
+                                     Me.BeginAnimation(UIElement.OpacityProperty, daV)
+                                 End Sub)
         End If
-    End Sub
-
-    Private Sub setopacity()
-        Me.Opacity = 0.2
     End Sub
 
     Private Sub RefHitokoto()
@@ -89,6 +85,11 @@ retry:
             Dim handle As New WindowInteropHelper(Me)
             SendMessage(handle.Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0)
         End If
-        movetime = Format(DateTime.Now, "yyyy/MM/dd hh:mm:ss")
+        Dim daV As DoubleAnimation = New DoubleAnimation(0.5, 1, New Duration(TimeSpan.FromSeconds(0.5)))
+        If DateDiff(DateInterval.Second, movetime, Now) > 5 Then
+            Me.BeginAnimation(UIElement.OpacityProperty, daV)
+        End If
+        movetime = Now
+        timeoutTimer.Enabled = True
     End Sub
 End Class
